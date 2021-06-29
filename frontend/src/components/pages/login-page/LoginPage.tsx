@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useAppDispatch } from '../../../hooks';
-import { loginAsync } from '../../../slices/user.slice';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { loginAsync, selectUser, UserState } from '../../../slices/user.slice';
 
 const LoginPage: React.FC<unknown> = (props) => {
 
@@ -10,6 +10,7 @@ const LoginPage: React.FC<unknown> = (props) => {
 
   const dispatch = useAppDispatch();
   const history = useHistory();
+  const currentUser = useAppSelector<UserState>(selectUser);
 
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -23,8 +24,8 @@ const LoginPage: React.FC<unknown> = (props) => {
     e.preventDefault();
 
     await dispatch(loginAsync({username, password}));
-
-    history.push('/');
+    if (currentUser) {
+    history.push('/');}
   }
 
   return (

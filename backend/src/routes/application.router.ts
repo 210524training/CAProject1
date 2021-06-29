@@ -39,42 +39,10 @@ applicationRouter.delete('/:id', async (req, res) => {
 });
 
 applicationRouter.get('/:username', async (req, res) => {
-  const {username} = req.params;
+  const { username } = req.params;
 
   res.json(
     await applicationService.getByUsername(username),
-  )
-})
-
-applicationRouter.get('/:supervisorApproval', async (req, res) => {
-  const {supervisorApproval} = req.params;
-
-  res.json(
-    await applicationService.getByUsername(supervisorApproval),
-  )
-})
-
-applicationRouter.get('/:benCoApproval', async (req, res) => {
-  const {benCoApproval} = req.params;
-
-  res.json(
-    await applicationService.getByUsername(benCoApproval),
-  )
-})
-
-applicationRouter.get('/:headApproval', async (req, res) => {
-  const {headApproval} = req.params;
-
-  res.json(
-    await applicationService.getByUsername(headApproval),
-  )
-})
-
-applicationRouter.get('/:gradeApproval', async (req, res) => {
-  const {gradeApproval} = req.params;
-
-  res.json(
-    await applicationService.getByUsername(gradeApproval),
   )
 })
 

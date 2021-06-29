@@ -11,5 +11,5 @@ export default class User {
   ) {}
 }
 
-export type userClass = 'Employee' | 'BenCo' | 'Head';
+export type userClass = 'Employee' | 'BenCo' | 'Head' | 'Supervisor';
 

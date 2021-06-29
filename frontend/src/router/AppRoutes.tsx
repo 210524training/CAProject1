@@ -4,8 +4,13 @@ import HomePage from '../components/pages/home-page/HomePage';
 import FileApplicationPage from '../components/pages/file-application-page/FileApplicationPage';
 import RegisterPage from '../components/pages/register-page/RegisterPage';
 import LoginPage from '../components/pages/login-page/LoginPage';
+import { useAppSelector } from '../hooks';
+import { selectUser, UserState } from '../slices/user.slice';
+import ViewPage from '../components/pages/view-application-page/ViewPage';
 
 const AppRoutes: React.FC<unknown> = (props) => {
+
+  const currentUser = useAppSelector<UserState>(selectUser);
 
   return (
     <Switch>
@@ -13,7 +18,13 @@ const AppRoutes: React.FC<unknown> = (props) => {
         <HomePage />
       </Route>
       <Route exact path='/applications'>
-        <FileApplicationPage />
+        {currentUser? (
+        <FileApplicationPage currentUser={currentUser}/>) : (<HomePage />)}
+      </Route>
+      <Route exact path='/view'>
+          {currentUser? (
+            <ViewPage currentUser={currentUser}/>) : (<HomePage />)
+          }
       </Route>
       <Route path='/register'>
         <RegisterPage />

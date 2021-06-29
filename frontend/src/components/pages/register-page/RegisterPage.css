@@ -1,3 +1,22 @@
 #register-form {
   margin-top: 60px;
 }
+
+table, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+
+}
+
+#spacer {
+  border: none;
+  padding: 10px;
+}
+
+#whole {
+  margin: 15px;
+}
+
+#whole>*{
+  padding: 10px;
+}

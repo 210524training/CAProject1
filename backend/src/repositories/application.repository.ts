@@ -114,7 +114,7 @@ export class ApplicationDAO {
       return data.Items as Application[];
     }
 
-    return [];
+    else{return []};
   }
 
   async getBySupervisorApproval(supervisorApproval:approval): Promise<Application[]> {

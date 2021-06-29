@@ -34,7 +34,7 @@ const Navbar: React.FC<Props> = (props) => {
               <NavLink className="nav-link" to="/applications">File Application</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/clicker">Clicker</NavLink>
+              <NavLink className="nav-link" to="/view">View Applications</NavLink>
             </li>
             </>
             ) : (

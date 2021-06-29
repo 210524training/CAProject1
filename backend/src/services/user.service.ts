@@ -12,6 +12,14 @@ export class UserService {
     return this.dao.getByUsername(username);
   }
 
+  getBySupervisor(username: string): Promise<User[] | undefined> {
+    return this.dao.getUserBySupervisor(username);
+  }
+
+  getByDepartment(department:string): Promise<User[] | undefined> {
+    return this.dao.getUserByDepartment(department);
+  }
+
   register(user: User): Promise<boolean> {
     return this.dao.register(new User(
       user.username,

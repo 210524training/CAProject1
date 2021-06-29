@@ -10,5 +10,5 @@ export default interface User {
      yearReimbursement: number,
 }
 
-export type userClass = 'Employee' | 'BenCo' | 'Head';
+export type userClass = 'Employee' | 'BenCo' | 'Head' | 'Supervisor';
 
