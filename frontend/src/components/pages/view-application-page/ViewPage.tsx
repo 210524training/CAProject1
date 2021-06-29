@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Application, { approval } from "../../../models/application";
 import User from "../../../models/user";
-import { getApps, getAppsByUsername, getBySupervisor, getByDepartment, deleteApp } from "../../../remote/backend/TRM.api";
+import { getApps, getBySupervisor, getByDepartment, deleteApp } from "../../../remote/backend/TRM.api";
 import TRMClient from "../../../remote/backend/TRM.client";
 import '../register-page/RegisterPage.css'
 
@@ -633,7 +633,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
             </div>)
     }
     else if (props.currentUser?.userClass === 'Supervisor') {
-        return (<div>
+        return (<div id="whole">
             <br></br>
             <br></br>
             <br></br>
