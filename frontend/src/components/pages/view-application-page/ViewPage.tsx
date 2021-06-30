@@ -399,7 +399,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
         <>
             <tr>
                 <td>Application ID: {app.id}</td>
-                <td>Urgent: {app.urgent ? 'Yes' : 'No'}</td>
+                <td>Urgent: {(Date.now() >= (new Date(app.courseDate).getTime() - (1000*60*60*24*7*2))) ? 'Yes' : 'No'}</td>
                 <td>Employee Username: {app.username}</td>
                 <td>Employee Name: {app.name}</td>
                 <td>Employee Email: {app.email}</td>
@@ -436,6 +436,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                 <td>Dept. Head Message: {app.HToS}</td>
                 <td>Message to Dept. Head: {app.SToH}</td>
             </tr>
+            <tr><td id="spacer"></td></tr>
         </>
     ))
 
@@ -444,7 +445,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
         <>
             <tr>
                 <td>Application ID: {app.id}</td>
-                <td>Urgent: {app.urgent ? 'Yes' : 'No'}</td>
+                <td>Urgent: {(Date.now() >= (new Date(app.courseDate).getTime() - (1000*60*60*24*7*2))) ? 'Yes' : 'No'}</td>
                 <td>Employee Username: {app.username}</td>
                 <td>Employee Name: {app.name}</td>
                 <td>Employee Email: {app.email}</td>
@@ -489,7 +490,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
         <>
             <tr>
                 <td>Application ID: {app.id}</td>
-                <td>Urgent: {app.urgent ? 'Yes' : 'No'}</td>
+                <td>Urgent: {(Date.now() >= (new Date(app.courseDate).getTime() - (1000*60*60*24*7*2))) ? 'Yes' : 'No'}</td>
                 <td>Employee Username: {app.username}</td>
                 <td>Employee Name: {app.name}</td>
                 <td>Employee Email: {app.email}</td>
@@ -526,6 +527,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                 <td>Direct Supervisor Message: {app.SToH}</td>
                 <td>Message to Direct Supervisor: {app.HToS}</td>
             </tr>
+            <tr><td id="spacer"></td></tr>
         </>
     ))
 
@@ -533,7 +535,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
         <>
             <tr>
                 <td>Application ID: {app.id}</td>
-                <td>Urgent: {app.urgent ? 'Yes' : 'No'}</td>
+                <td>Urgent: {(Date.now() >= (new Date(app.courseDate).getTime() - (1000*60*60*24*7*2))) ? 'Yes' : 'No'}</td>
                 <td>Employee Username: {app.username}</td>
                 <td>Employee Name: {app.name}</td>
                 <td>Employee Email: {app.email}</td>
@@ -570,7 +572,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                 <td>Dept. Head Message: {app.HToBC}</td>
                 <td>Message to Dept. Head: {app.BCToH}</td>
             </tr>
-
+            <tr><td id="spacer"></td></tr>
         </>
     ))
 
