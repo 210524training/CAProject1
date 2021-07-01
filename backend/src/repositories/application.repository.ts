@@ -12,7 +12,7 @@ export class ApplicationDAO {
   async getAll(): Promise<Application[]> {
     const params: DocumentClient.ScanInput = {
       TableName: 'Applications',
-      ProjectionExpression: '#un, #nm, #em, #id, #sa, #bca, #ha, #cn, #ct, #am, #aam, #ad, #cd, #cl, #gt, #ga, #gd, #ju, #cds, #ur, #sap, #pd, #mwd, #ste, #ets, #hte, #eth, #hts, #sth, #bte, #etb, #bts, #stb, #bth, #htb',
+      ProjectionExpression: '#un, #nm, #em, #id, #sa, #bca, #ha, #cn, #ct, #am, #aam, #ad, #cd, #cl, #gt, #ga, #gd, #ju, #cds, #ur, #sap, #pd, #mwd, #ste, #ets, #hte, #eth, #hts, #sth, #bte, #etb, #bts, #stb, #bth, #htb, #grad, #f1, #f2',
       ExpressionAttributeNames: {
         '#un': 'username',
         '#nm': 'name',
@@ -49,6 +49,9 @@ export class ApplicationDAO {
         '#stb': 'SToBC',
         '#bth': 'BCToH',
         '#htb': 'HToBC',
+        '#grad': 'grade',
+        '#f1': 'startFile',
+        '#f2': 'secondFile',
       },
     };
 
@@ -347,7 +350,7 @@ export class ApplicationDAO {
       Key: {
         id,
       },
-      ProjectionExpression: '#un, #nm, #em, #id, #sa, #bca, #ha, #cn, #ct, #am, #aam, #ad, #cd, #cl, #gt, #ga, #gd, #ju, #cds, #ur, #sap, #pd, #mwd, #ste, #ets, #hte, #eth, #hts, #sth, #bte, #etb, #bts, #stb, #bth, #htb',
+      ProjectionExpression: '#un, #nm, #em, #id, #sa, #bca, #ha, #cn, #ct, #am, #aam, #ad, #cd, #cl, #gt, #ga, #gd, #ju, #cds, #ur, #sap, #pd, #mwd, #ste, #ets, #hte, #eth, #hts, #sth, #bte, #etb, #bts, #stb, #bth, #htb, #grad, #f1, #f2',
       ExpressionAttributeNames: {
         '#un': 'username',
         '#nm': 'name',
@@ -384,6 +387,9 @@ export class ApplicationDAO {
         '#stb': 'SToBC',
         '#bth': 'BCToH',
         '#htb': 'HToBC',
+        '#grad': 'grade',
+        '#f1': 'startFile',
+        '#f2': 'secondFile',
       },
     };
 
