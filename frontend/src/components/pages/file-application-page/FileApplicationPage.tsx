@@ -28,6 +28,7 @@ const FileApplicationPage: React.FC<Props> = (props) => {
   const [courseDescription, setCourseDescription] = useState<string>();
   const [preapprovalDescription, setPreapprovalDescription] = useState<string>();
   const [missedWorkDesc, setMissedWorkDesc] = useState<string>();
+  const [empFile, setEmpFile] = useState<File>();
 
   useEffect(() => {
     setUsername(props.currentUser?.username);
@@ -116,6 +117,11 @@ const FileApplicationPage: React.FC<Props> = (props) => {
     setMissedWorkDesc(e.target.value);
   }
 
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if(e.target.files) {
+    setEmpFile(e.target.files[0]);}
+  }
+
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -141,6 +147,9 @@ const FileApplicationPage: React.FC<Props> = (props) => {
       courseDescription,
       urgent: false,
       specialApproval: false,
+      grade: '',
+      startFile: empFile,
+      secondFile: {},
       preapprovalDescription,
       missedWorkDesc,
       SToEm: '',
@@ -174,7 +183,7 @@ const FileApplicationPage: React.FC<Props> = (props) => {
         <div>
           <label htmlFor="courseTypeSelect" className="form-label">Course Type</label>
           <select name="courseType" id="courseTypeInput" onChange={handleCourseTypeChange}>
-            <option value="University Course" selected>University Course</option>
+            <option value="University Course">University Course</option>
             <option value="Seminar">Seminar</option>
             <option value="Certification Prep">Certification Preparation</option>
             <option value="Certification">Certification</option>
@@ -208,7 +217,7 @@ const FileApplicationPage: React.FC<Props> = (props) => {
         <div>
           <label htmlFor="gradeTypeSelect" className="form-label">Grade Type</label>
           <select name="gradeType" id="gradeTypeInput" onChange={handleGradeTypeChange}>
-            <option value="Letter Grade" selected>Letter Grade</option>
+            <option value="Letter Grade">Letter Grade</option>
             <option value="Score">Numerical Score</option>
             <option value="Percent Score">Percent Score</option>
             <option value="Presentation">Presentation</option>
@@ -233,6 +242,11 @@ const FileApplicationPage: React.FC<Props> = (props) => {
           <label htmlFor="missedWInput" className="form-label">Missed Work Description</label>
           <input type="textarea" className="form-control" id="MWInput"
             onChange={handleSetMissedWorkDescChange} />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="startFiles" className="form-label">File Upload</label>
+          <input type="file" className="form-control" id="FileInput"
+            onChange={handleFileChange} />
         </div>
         <input type="submit" className="btn btn-primary" value='Submit' />
       </form>

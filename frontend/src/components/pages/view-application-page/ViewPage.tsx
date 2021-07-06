@@ -31,6 +31,8 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
     const [selectedAppEmp, setSelectedAppEmp] = useState<Application>();
     const [appID2, setAppID2] = useState<string>();
     const [selectedAppEmp2, setSelectedAppEmp2] = useState<Application>();
+    const [AG, setAG] = useState<string>();
+    const [gradeFile, setGradeFile] = useState<File>();
 
     const handleBenCoAppChange = (e: ChangeEvent<HTMLSelectElement>) => {
         setBenCoApproval(e.target.value as approval);
@@ -72,6 +74,15 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
         setAppID2(e.target.value);
     }
 
+    const handleAGChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setAG(e.target.value);
+    }
+
+    const handleGFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if(e.target.files) {
+        setGradeFile(e.target.files[0]);}
+    }
+
     const handleDelete = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const app = selectedAppEmp2;
@@ -110,6 +121,9 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                 courseDescription: app.courseDescription,
                 urgent: app.urgent,
                 specialApproval: app.specialApproval,
+                grade: app.grade,
+                startFile: app.startFile,
+                secondFile: app.secondFile,
                 preapprovalDescription: app.preapprovalDescription,
                 missedWorkDesc: app.missedWorkDesc,
                 SToEm: app.SToEm,
@@ -158,6 +172,9 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                 courseDescription: app.courseDescription,
                 urgent: app.urgent,
                 specialApproval: app.specialApproval,
+                grade: app.grade,
+                startFile: app.startFile,
+                secondFile: app.secondFile,
                 preapprovalDescription: app.preapprovalDescription,
                 missedWorkDesc: app.missedWorkDesc,
                 SToEm: app.SToEm,
@@ -206,6 +223,9 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                 courseDescription: app.courseDescription,
                 urgent: app.urgent,
                 specialApproval: specialBool,
+                grade: app.grade,
+                startFile: app.startFile,
+                secondFile: app.secondFile,
                 preapprovalDescription: app.preapprovalDescription,
                 missedWorkDesc: app.missedWorkDesc,
                 SToEm: BCToEm,
@@ -254,6 +274,9 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                 courseDescription: app.courseDescription,
                 urgent: app.urgent,
                 specialApproval: app.specialApproval,
+                grade: AG,
+                startFile: app.startFile,
+                secondFile: gradeFile,
                 preapprovalDescription: app.preapprovalDescription,
                 missedWorkDesc: app.missedWorkDesc,
                 SToEm: app.SToEm,
@@ -399,7 +422,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
         <>
             <tr>
                 <td>Application ID: {app.id}</td>
-                <td>Urgent: {app.urgent ? 'Yes' : 'No'}</td>
+                <td>Urgent: {(Date.now() >= (new Date(app.courseDate).getTime() - (1000 * 60 * 60 * 24 * 7 * 2))) ? 'Yes' : 'No'}</td>
                 <td>Employee Username: {app.username}</td>
                 <td>Employee Name: {app.name}</td>
                 <td>Employee Email: {app.email}</td>
@@ -419,6 +442,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
             </tr>
             <tr>
                 <td>Grade Type: {app.gradeType}</td>
+                <td>Achieved Grade: {app.grade}</td>
                 <td>Grade Description/Cutoff: {app.gradeDescription ? app.gradeDescription : 'Defaults: C, 70% (or equivalent score, rounding up), presentation approved.'}</td>
                 <td>Grade Approval: {app.gradeApproval}</td>
                 <td>Supervisor Approved Presentation: {app.specialApproval ? 'Yes' : 'No'}</td>
@@ -436,6 +460,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                 <td>Dept. Head Message: {app.HToS}</td>
                 <td>Message to Dept. Head: {app.SToH}</td>
             </tr>
+            <tr><td id="spacer"></td></tr>
         </>
     ))
 
@@ -444,7 +469,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
         <>
             <tr>
                 <td>Application ID: {app.id}</td>
-                <td>Urgent: {app.urgent ? 'Yes' : 'No'}</td>
+                <td>Urgent: {(Date.now() >= (new Date(app.courseDate).getTime() - (1000 * 60 * 60 * 24 * 7 * 2))) ? 'Yes' : 'No'}</td>
                 <td>Employee Username: {app.username}</td>
                 <td>Employee Name: {app.name}</td>
                 <td>Employee Email: {app.email}</td>
@@ -464,6 +489,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
             </tr>
             <tr>
                 <td>Grade Type: {app.gradeType}</td>
+                <td>Achieved Grade: {app.grade}</td>
                 <td>Grade Description/Cutoff: {app.gradeDescription ? app.gradeDescription : 'Defaults: C, 70% (or equivalent score, rounding up), presentation approved.'}</td>
                 <td>Grade Approval: {app.gradeApproval}</td>
                 <td>Supervisor Approved Presentation: {app.specialApproval ? 'Yes' : 'No'}</td>
@@ -489,7 +515,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
         <>
             <tr>
                 <td>Application ID: {app.id}</td>
-                <td>Urgent: {app.urgent ? 'Yes' : 'No'}</td>
+                <td>Urgent: {(Date.now() >= (new Date(app.courseDate).getTime() - (1000 * 60 * 60 * 24 * 7 * 2))) ? 'Yes' : 'No'}</td>
                 <td>Employee Username: {app.username}</td>
                 <td>Employee Name: {app.name}</td>
                 <td>Employee Email: {app.email}</td>
@@ -509,6 +535,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
             </tr>
             <tr>
                 <td>Grade Type: {app.gradeType}</td>
+                <td>Achieved Grade: {app.grade}</td>
                 <td>Grade Description/Cutoff: {app.gradeDescription ? app.gradeDescription : 'Defaults: C, 70% (or equivalent score, rounding up), presentation approved.'}</td>
                 <td>Grade Approval: {app.gradeApproval}</td>
                 <td>Supervisor Approved Presentation: {app.specialApproval ? 'Yes' : 'No'}</td>
@@ -526,6 +553,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                 <td>Direct Supervisor Message: {app.SToH}</td>
                 <td>Message to Direct Supervisor: {app.HToS}</td>
             </tr>
+            <tr><td id="spacer"></td></tr>
         </>
     ))
 
@@ -533,7 +561,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
         <>
             <tr>
                 <td>Application ID: {app.id}</td>
-                <td>Urgent: {app.urgent ? 'Yes' : 'No'}</td>
+                <td>Urgent: {(Date.now() >= (new Date(app.courseDate).getTime() - (1000 * 60 * 60 * 24 * 7 * 2))) ? 'Yes' : 'No'}</td>
                 <td>Employee Username: {app.username}</td>
                 <td>Employee Name: {app.name}</td>
                 <td>Employee Email: {app.email}</td>
@@ -553,6 +581,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
             </tr>
             <tr>
                 <td>Grade Type: {app.gradeType}</td>
+                <td>Achieved Grade: {app.grade}</td>
                 <td>Grade Description/Cutoff: {app.gradeDescription ? app.gradeDescription : 'Defaults: C, 70% (or equivalent score, rounding up), presentation approved.'}</td>
                 <td>Grade Approval: {app.gradeApproval}</td>
                 <td>Supervisor Approved Presentation: {app.specialApproval ? 'Yes' : 'No'}</td>
@@ -570,7 +599,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                 <td>Dept. Head Message: {app.HToBC}</td>
                 <td>Message to Dept. Head: {app.BCToH}</td>
             </tr>
-
+            <tr><td id="spacer"></td></tr>
         </>
     ))
 
@@ -686,7 +715,7 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
         </div>)
     }
     else if (props.currentUser?.userClass === 'Head') {
-        return (<div id = "whole">
+        return (<div id="whole">
             <br></br>
             <br></br>
             <br></br>
@@ -754,6 +783,16 @@ const ViewApplicationsPage: React.FC<Props> = (props) => {
                         <label htmlFor="selectedAppt" className="form-label">ID of Application to Update</label>
                         <input type="text" className="form-control" id="appID"
                             onChange={handleAppID} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="AGComment" className="form-label">Grade Achieved</label>
+                        <input type="text" className="form-control" id="GA"
+                            onChange={handleAGChange} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="gradeFiles" className="form-label">Grade File Upload</label>
+                        <input type="file" className="form-control" id="GFileInput"
+                            onChange={handleGFileChange} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="ESComment" className="form-label">Comment for Supervisor:</label>
