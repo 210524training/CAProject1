@@ -45,6 +45,6 @@ Additional actions, such as sending messages to other users associated with the 
 Note: The user roles Supervisor, BenCo, and DeptHead must be assigned manually to users through the DynamoDB console.
 
 ## License:
-This project uses the following license: MIT.
+This project uses the following license: [MIT](https://github.com/210524training/CAProject1/blob/main/LICENSE).
 
 
